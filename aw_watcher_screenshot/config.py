@@ -6,14 +6,17 @@ default_config = """
 [aw-watcher-screenshot]
 exclude_title = false
 exclude_titles = []
-poll_time = 60.0
+poll_time = 20.0
 on_window_change = false
+name_template = "monitor_{mon}_{date}.png"
 strategy_macos = "swift"
 """.strip()
 
 
 def load_config():
-    return load_config_toml("aw-watcher-screenshot", default_config)["aw-watcher-screenshot"]
+    return load_config_toml("aw-watcher-screenshot", default_config)[
+        "aw-watcher-screenshot"
+    ]
 
 
 def parse_args():
@@ -24,6 +27,7 @@ def parse_args():
     default_exclude_titles = config["exclude_titles"]
     default_strategy_macos = config["strategy_macos"]
     default_on_window_change = config["on_window_change"]
+    default_name_template = config["name_template"]
 
     parser = argparse.ArgumentParser(
         description="A cross platform window watcher for Activitywatch.\nSupported on: Linux (X11), macOS and Windows."
@@ -59,7 +63,13 @@ def parse_args():
         dest="strategy",
         default=default_strategy_macos,
         choices=["jxa", "applescript", "swift"],
-        help="(macOS only) strategy to use for retrieving the active window",
+        help="(macOS only) strategy to use for retrieving the active window.",
+    )
+    parser.add_argument(
+        "--name_template",
+        dest="name_template",
+        default=default_name_template,
+        help="Template for the screenshot filenames.",
     )
     parsed_args = parser.parse_args()
     return parsed_args
