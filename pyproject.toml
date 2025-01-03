@@ -10,7 +10,7 @@ python = "^3.13"
 aw-client = "^0.5.14"
 mss = "^10.0.0"
 pillow = "^11.1.0"
-aw-watcher-window = {git = "https://github.com/ActivityWatch/aw-watcher-window.git"}
+aw-watcher-window = {git = "https://github.com/ActivityWatch/aw-watcher-window.git", rev = "c80aa5a"}
 
 
 [build-system]
