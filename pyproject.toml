@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "aw-watcher-screenshot"
+version = "0.1.0"
+description = ""
+authors = ["tiagovla <tiagovla@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+aw-client = "^0.5.14"
+mss = "^10.0.0"
+pillow = "^11.1.0"
+aw-watcher-window = {git = "https://github.com/ActivityWatch/aw-watcher-window.git"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
